@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE = edge"><![endif]-->
     <title>CHESS WAR</title>
     <meta name="description" content="CHESS WAR - таймер, для игры в быстрые шахматы">
+    <audio preload="metadata">
+      <source src="gong.mp3" type="audio/mpeg">
+    </audio>
+    <audio preload="metadata">
+      <source src="tick.mp3" type="audio/mpeg">
+    </audio>
     <link rel="stylesheet" href="./css/style.min.css">
   </head>
   <body>
@@ -26,13 +32,13 @@
           <div class="players__items">
             <div class="players__item">
               <div class="players__name" id="gamer-white">Игрок 1</div>
-              <div class="players__time">9</div>
+              <div class="players__time" id="white-timer">9</div>
             </div>
             <div class="players__item players__item--black">
               <div class="players__name" id="gamer-black">Игрок 2</div>
-              <div class="players__time">9</div>
+              <div class="players__time" id="black-timer">9</div>
             </div>
-            <button class="btn players__replace">
+            <button class="btn players__replace active">
               <svg class="icon">
                 <use xlink:href="./images/svg-sprite.svg#icon-arrow-up-down"></use>
               </svg>
