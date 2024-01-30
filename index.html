@@ -7,12 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE = edge"><![endif]-->
     <title>CHESS WAR</title>
     <meta name="description" content="CHESS WAR - таймер, для игры в быстрые шахматы">
-    <audio preload="metadata">
-      <source src="gong.mp3" type="audio/mpeg">
-    </audio>
-    <audio preload="metadata">
-      <source src="tick.mp3" type="audio/mpeg">
-    </audio>
     <link rel="stylesheet" href="./css/style.min.css">
   </head>
   <body>
@@ -20,7 +14,7 @@
         <picture>
           <source type="image/webp" srcset="images/@1x/logo@1x.webp 1x, images/@2x/logo@2x.webp 2x"><img src="images/@1x/logo@1x.png" srcset="images/@2x/logo@2x.png 2x" alt="CHEES WAR" width="240" height="73">
         </picture></span>
-      <button class="btn header__settings">
+      <button class="btn header__settings" id="open-settings">
         <svg class="icon">
           <use xlink:href="./images/svg-sprite.svg#icon-settings"></use>
         </svg>
@@ -38,16 +32,16 @@
               <div class="players__name" id="gamer-black">Игрок 2</div>
               <div class="players__time" id="black-timer">9</div>
             </div>
-            <button class="btn players__replace active">
+            <button class="btn players__replace active" id="swap-inputs">
               <svg class="icon">
                 <use xlink:href="./images/svg-sprite.svg#icon-arrow-up-down"></use>
               </svg>
             </button>
           </div>
           <div class="players__btns">
-            <button class="btn players__btn players__btn--white">Left Ctrl</button>
-            <button class="btn players__btn players__btn--start active">Старт</button>
-            <button class="btn players__btn players__btn--black">Enter</button>
+            <button class="btn players__btn players__btn--white" id="gamer-1-btn">Left Ctrl</button>
+            <button class="btn players__btn players__btn--start active" id="start-pause">Старт</button>
+            <button class="btn players__btn players__btn--black" id="gamer-2-btn">Enter</button>
           </div>
         </div>
       </div>
@@ -70,7 +64,7 @@
                 <input class="popup__input" id="gamer-2" type="text" placeholder="Игрок-2" value="Игрок-2" name="gamer-2">
               </div>
             </div>
-            <button class="btn popup__replace">
+            <button class="btn popup__replace" id="swap-popup-inputs">
               <svg class="icon">
                 <use xlink:href="./images/svg-sprite.svg#icon-arrow-up-down"></use>
               </svg>
@@ -80,14 +74,14 @@
             <label class="popup__label" for="timer">Время в секундах:</label>
             <input class="popup__num" id="timer" type="number" min="0" value="5" name="timer">
           </div>
-          <button class="btn popup__save">
+          <button class="btn popup__save" id="save-settings">
             <svg class="icon">
               <use xlink:href="./images/svg-sprite.svg#icon-save"></use>
             </svg>Сохранить
           </button>
         </div>
       </div>
-      <div class="popup timer" id="popup-start-timer">
+      <div class="popup timer" id="preload">
         <ul class="timer__list">
           <li class="timer__item">Поехали</li>
           <li class="timer__item">1</li>
