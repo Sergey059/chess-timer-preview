@@ -10,10 +10,14 @@
     <link rel="stylesheet" href="./css/style.min.css">
   </head>
   <body>
-    <header class="header" id="header"><span class="logo header__logo">
+    <header class="header" id="header">
+      <div class="logo header__logo">
         <picture>
           <source type="image/webp" srcset="images/@1x/logo@1x.webp 1x, images/@2x/logo@2x.webp 2x"><img src="images/@1x/logo@1x.png" srcset="images/@2x/logo@2x.png 2x" alt="CHEES WAR" width="240" height="73">
-        </picture></span>
+        </picture>
+        <h1 class="logo__text">CHEES WAR</h1>
+        <p class="logo__desc">Таймер для игры в быстрые шахматы</p>
+      </div>
       <button class="btn header__settings" id="open-settings">
         <svg class="icon">
           <use xlink:href="./images/svg-sprite.svg#icon-settings"></use>
@@ -24,31 +28,24 @@
       <div class="container">
         <div class="players">
           <div class="players__items">
-            <div class="players__item">
-              <div class="players__name" id="gamer-white">Игрок 1</div>
-              <div class="players__time" id="white-timer">9</div>
-            </div>
-            <div class="players__item players__item--black">
-              <div class="players__name" id="gamer-black">Игрок 2</div>
-              <div class="players__time" id="black-timer">9</div>
-            </div>
-            <button class="btn players__replace active" id="swap-inputs">
+            <button class="players__item players__item--1" disabled id="gamer-1-btn"><span class="players__name" id="gamer-white">Игрок 1</span><span class="players__time" id="white-timer">9</span></button>
+            <button class="btn players__replace" aria-label="swap players" id="swap-inputs">
               <svg class="icon">
                 <use xlink:href="./images/svg-sprite.svg#icon-arrow-up-down"></use>
               </svg>
             </button>
+            <button class="players__item players__item--2" disabled id="gamer-2-btn"><span class="players__name" id="gamer-black">Игрок 2</span><span class="players__time" id="black-timer">9</span></button>
+            <button class="btn players__start active" id="start-pause">Старт</button>
           </div>
-          <div class="players__btns">
-            <button class="btn players__btn players__btn--white" id="gamer-1-btn">Left Ctrl</button>
-            <button class="btn players__btn players__btn--start active" id="start-pause">Старт</button>
-            <button class="btn players__btn players__btn--black" id="gamer-2-btn">Right Ctrl</button>
-          </div>
+        </div>
+        <div class="popup game-over" id="game-over">
+          <p><span id="game-over-text"></span><span>проиграли</span></p>
         </div>
       </div>
     </main>
     <footer class="footer">
       <div class="container footer__container">
-        <p class="footer__copy">© 2024</p>
+        <p class="footer__copy">© 2024 <a class="footer__link" href="https://sv-59.ru/">Sergei Vedernikov</a></p>
       </div>
       <div class="popup" id="popup-settings">
         <div class="popup__body">
@@ -74,6 +71,22 @@
             <label class="popup__label" for="timer">Время в секундах:</label>
             <input class="popup__num" id="timer" type="number" min="0" value="5" name="timer">
           </div>
+          <div class="popup__item popup__item--mobile">
+            <label class="popup__label">Клавиша белых:</label>
+            <button class="popup__num"> <span id="key-1">ControlLeft</span>
+              <svg class="icon">
+                <use xlink:href="./images/svg-sprite.svg#icon-pencil"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="popup__item popup__item--mobile">
+            <label class="popup__label">Клавиша черных:</label>
+            <button class="popup__num"><span id="key-2">ControlRight</span>
+              <svg class="icon">
+                <use xlink:href="./images/svg-sprite.svg#icon-pencil"></use>
+              </svg>
+            </button>
+          </div>
           <button class="btn popup__save" id="save-settings">
             <svg class="icon">
               <use xlink:href="./images/svg-sprite.svg#icon-save"></use>
@@ -81,15 +94,11 @@
           </button>
         </div>
       </div>
-      <div class="popup timer" id="preload">
-        <ul class="timer__list">
-          <li class="timer__item">Поехали</li>
-          <li class="timer__item">1</li>
-          <li class="timer__item">2</li>
-          <li class="timer__item">3</li>
-          <li class="timer__item">4</li>
-          <li class="timer__item active">5</li>
-        </ul>
+      <div class="popup__keys" id="keys-popup">
+        <p>Нажмите любую клавишу кроме ENTER</p>
+      </div>
+      <div class="popup" id="preload">
+        <div class="timer" id="timer-preload"></div>
       </div>
     </footer>
     <script src="./js/script.min.js"></script>
